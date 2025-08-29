@@ -36,7 +36,7 @@ def recomendar_canciones(song_title, n_recommendations=10):
 
 st.title("Music Recommender App")
 
-song_list = df["track_name"].unique()
+song_list = sorted(df["track_name"].unique())
 song_choice = st.selectbox("Elige una canción:", song_list)
 
 n_recs = st.slider("Número de recomendaciones:", 1, 20, 5)
@@ -48,3 +48,4 @@ if st.button("Recomendar"):
     else:
         st.subheader(f"🔎 Recomendaciones para '{song_choice}':")
         st.dataframe(recs.reset_index(drop=True))
+
